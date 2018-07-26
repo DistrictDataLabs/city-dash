@@ -7,8 +7,11 @@ The files containing the data are the ones whose filenames end with â€œann.csv.â
 
 The main goal here is to be able to aggregate to a city level and display a mix of interactive visualizations and natural language descriptions on a dashboard.
 
-*Look into Plotly Dashboard https://plot.ly/products/dash/
 
-### 1. Install Anaconda
+### To open dash app:
 
-https://www.anaconda.com/download Python 3.6
+- install requirements.txt
+or
+- run ```conda env create -f environment.yml```
+- run ```python run.py```
+- in browser open http://127.0.0.1:8050/
