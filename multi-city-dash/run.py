@@ -4,7 +4,7 @@ import dash_html_components as html
 import dash_table_experiments as dt
 
 from app import app
-from apps import app1, app2, app3
+from apps import app1, app2, app3, app4
 from index import layout
 from header import header
 
@@ -29,6 +29,8 @@ def display_page(pathname):
          return app2.layout
     elif pathname == '/apps/app3':
          return app3.layout
+    elif pathname == '/apps/app4':
+         return app4.layout
     else:
         return '404'
 

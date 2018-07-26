@@ -37,9 +37,10 @@ header = html.Div([
 
                 #links to apps
                 html.Div([
-                    html.Div([dcc.Link('Index', href='/')],className='three columns'),
-                    html.Div([dcc.Link('App1', href='/apps/app1')],className='three columns'),
-                    html.Div([dcc.Link('App2', href='/apps/app2')],className='three columns'),
-                    html.Div([dcc.Link('App3', href='/apps/app3')],className='three columns')]
+                    html.Div([dcc.Link('Index', href='/')],className='two columns'),
+                    html.Div([dcc.Link('Datatable', href='/apps/app1')],className='two columns'),
+                    html.Div([dcc.Link('Point Map', href='/apps/app2')],className='two columns'),
+                    html.Div([dcc.Link('Choropleth Counties', href='/apps/app3')],className='two columns'),
+                    html.Div([dcc.Link('Choropleth States', href='/apps/app4')],className='two columns')]
                 ,className='container',style={'padding': 25, 'color':'#39536B'})
 ])
