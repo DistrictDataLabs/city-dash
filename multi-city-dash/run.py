@@ -4,10 +4,9 @@ import dash_html_components as html
 import dash_table_experiments as dt
 
 from app import app
-from apps import app1, app2, app3, app4
+from apps import app1, app2, app3, app4, app5
 from index import layout
 from header import header
-
 
 app.title = 'This is a title'
 app.layout = html.Div([
@@ -31,6 +30,8 @@ def display_page(pathname):
          return app3.layout
     elif pathname == '/apps/app4':
          return app4.layout
+    elif pathname == '/apps/app5':
+         return app5.layout
     else:
         return '404'
 

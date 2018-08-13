@@ -6,6 +6,9 @@ import pandas as pd
 
 from app import app
 from header import header
+#from flask_caching import Cache
+
+#cache = app.cache
 
 # API map key
 mapbox_access_token = 'pk.eyJ1IjoiZXhiYWxkIiwiYSI6ImNqaGYyYWdhejE2ejQzY24ycm5ka3dvd3YifQ.P_nA6egJyCpBE58CacGikQ'
@@ -47,3 +50,4 @@ layout = html.Div([
                 }
             )
 ]) ######## END OF LAYOUT ########
+#@cache.memoize()

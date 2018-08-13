@@ -41,6 +41,7 @@ header = html.Div([
                     html.Div([dcc.Link('Datatable', href='/apps/app1')],className='two columns'),
                     html.Div([dcc.Link('Point Map', href='/apps/app2')],className='two columns'),
                     html.Div([dcc.Link('Choropleth Counties', href='/apps/app3')],className='two columns'),
-                    html.Div([dcc.Link('Choropleth States', href='/apps/app4')],className='two columns')]
+                    html.Div([dcc.Link('Choropleth States', href='/apps/app4')],className='two columns'),
+                    html.Div([dcc.Link('app5', href='/apps/app5')],className='two columns')]
                 ,className='container',style={'padding': 25, 'color':'#39536B'})
 ])

@@ -8,18 +8,33 @@ import plotly
 
 from app import app
 from header import header
+from flask_caching import Cache
+import os
+import copy
 
 T_Household = pd.read_csv('./data/df_th.csv', index_col=0)
-T_Household = T_Household.iloc[0:4000]
+#T_Household = T_Household.iloc[0:4000]
 
 total_rows=len(T_Household.axes[0])
 total_cols=len(T_Household.axes[1])
+
+cache = Cache(app.server, config={
+    'CACHE_TYPE': 'filesystem',
+    'CACHE_DIR': 'cache-directory'
+})
+# CACHE_CONFIG = {
+#     # try 'filesystem' if you don't want to setup redis
+#     'CACHE_TYPE': 'redis',
+#     'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'localhost:6379')
+# }
+# cache = Cache()
+# cache.init_app(app.server, config=CACHE_CONFIG)
 
 layout = html.Div([
     header,
     html.H3('Datatable'),
     html.P('This table has ' + str(total_rows) + ' rows and ' + str(total_cols) + ' columns' \
-    + ' - uncomment line #13 in app1.py for a full table'
+    + ' - uncomment line #14 in app1.py for a full table'
         ),
     dt.DataTable(
         rows=T_Household.to_dict('records'),
@@ -37,12 +52,13 @@ layout = html.Div([
         )
 ]) ######## END OF LAYOUT ########
 
+
 #callbacks
+@cache.memoize()
 @app.callback(
     Output('datatable-households', 'selected_row_indices'),
     [Input('graph-households', 'clickData')],
     [State('datatable-households', 'selected_row_indices')])
-
 def update_selected_row_indices(clickData, selected_row_indices):
     if clickData:
         for point in clickData['points']:

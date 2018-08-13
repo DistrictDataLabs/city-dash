@@ -6,6 +6,9 @@ import pandas as pd
 
 from app import app
 from header import header
+#from flask_caching import Cache
+
+#cache = app.cache
 
 df = pd.read_csv('./data/df_th.csv', index_col=0).groupby(["state"], as_index=False).sum()
 new_cols = ['state', '02HC01_VC03', '02HC01_VC04', '02HC01_VC05']
@@ -54,3 +57,4 @@ layout = html.Div([
                 }
             )
 ]) ######## END OF LAYOUT ########
+#@cache.memoize()

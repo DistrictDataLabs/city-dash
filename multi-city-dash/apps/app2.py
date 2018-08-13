@@ -4,12 +4,20 @@ import dash_core_components as dcc
 import plotly.graph_objs as go
 import pandas as pd
 
-from app import app
+from app import app, data
 from header import header
+#from flask_caching import Cache
 
-df = pd.read_csv('./data/df_th.csv', low_memory=False)
+df = data
+#df = pd.read_csv('./data/df_th.csv', low_memory=False)
+
 # API map key
 mapbox_access_token = 'pk.eyJ1IjoiZXhiYWxkIiwiYSI6ImNqaGYyYWdhejE2ejQzY24ycm5ka3dvd3YifQ.P_nA6egJyCpBE58CacGikQ'
+
+# cache = Cache(app.server, config={
+#     'CACHE_TYPE': 'filesystem',
+#     'CACHE_DIR': 'cache-directory'
+# })
 
 layout = html.Div([
             header,
@@ -46,12 +54,14 @@ layout = html.Div([
 ]) ######## END OF LAYOUT ########
 
 #callbacks
+
 @app.callback(
     Output('text-hover', 'children'),
     [Input('map', 'hoverData')]
 )
 
 # function for map hover
+#@cache.memoize()
 def update_text(hoverData):
     s = df[df.index == hoverData['points'][0]['customdata']]
     return html.Div(
